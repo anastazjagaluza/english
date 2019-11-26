@@ -29,14 +29,13 @@ window.firebase
 	.getRedirectResult()
 	.then(function(result: any) {
 		if (result.credential) {
-			console.log('logged');
-			//document.querySelector<HTMLElement>('.welcome').style.display = 'none';
+			console.log('logged');git 
 			let user = result.user;
 			let points: PointCollection;
 			window.firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot: any) {
 				if (!(snapshot.val() === null)) {
 					points = snapshot.val().points;
-					
+
 					let game = showTheGame(user.displayName, user.email, user.uid, points, 'Witaj ponownie');
 				} else {
 					points = {
@@ -68,96 +67,7 @@ window.firebase
 		console.log(errorMessage);
 		let showlog = showLog('Coś poszło nie tak', 'Spróbuj ponownie za kilka minut', false, true);
 	});
-/* 
-export async function signUp() {
-	window.firebase
-		.auth()
-		.signInWithPopup(provider)
-		.then(
-			function(result: any) {
-				// This gives you a Google Access Token. You can use it to access the Google API.
-				var token = result.credential.accessToken;
-				// The signed-in user info.
-				var user = window.firebase.auth().currentUser;
-				// ...
-				window.firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot: any) {
-					if (!(snapshot.val() === null)) {
-						let showlog = showLog(
-							'Ten email już posiada konto',
-							'Zaloguj się lub załóż konto na inny adres email',
-							false,
-							true
-						);
-					} else {
-						var points: PointCollection = {
-							A2: 0,
-							B1: 0,
-							B2: 0,
-							C1: 0,
-							C2: 0,
-							All: 0
-						};
 
-						localStorage.setItem('user-info', JSON.stringify({ user }));
-						localStorage.setItem('points', JSON.stringify({ points }));
-						writeUserData(user.uid, points, user.displayName);
-						let game = showTheGame(
-							user.displayName,
-							user.email,
-							user.uid,
-							points,
-							'Dziękujemy za rejestrację w grze'
-						);
-					}
-				});
-			}
-			// ...
-		)
-		.catch(function(error: Error) {
-			var errorMessage = error.message;
-			console.log(errorMessage);
-			let showlog = showLog('Coś poszło nie tak', 'Spróbuj ponownie za kilka minut', false, true);
-		});
-}
-
-export function signInDesktop() {
-	window.firebase
-		.auth()
-		.signInWithPopup(provider)
-		.then(function(result: any) {
-			// This gives you a Google Access Token. You can use it to access the Google API.
-			var token = result.credential.accessToken;
-			// The signed-in user info.
-			var user = window.firebase.auth().currentUser;
-			// ...
-			var userId = window.firebase.auth().currentUser.uid;
-			window.firebase.database().ref('/users/' + userId).once('value').then(function(snapshot: any) {
-				if (snapshot.val() === null) {
-					let showlog = showLog('Coś poszło nie tak', 'Spróbuj ponownie za kilka minut', false, true);
-				} else {
-					var points = (snapshot.val() && snapshot.val().points) || {
-						A2: 0,
-						B1: 0,
-						B2: 0,
-						C1: 0,
-						C2: 0,
-						All: 0
-					};
-
-					localStorage.setItem('user-info', JSON.stringify({ user }));
-					localStorage.setItem('points', JSON.stringify({ points }));
-
-					let game = showTheGame(user.displayName, user.email, user.uid, points, 'Witaj z powrotem');
-				}
-				// ...
-			});
-		})
-		.catch(function(error: Error) {
-			var errorMessage = error.message;
-			console.log(errorMessage);
-			let showlog = showLog('Coś poszło nie tak', 'Spróbuj ponownie za kilka minut', false, true);
-		});
-} */
 export function writeUserData(userId: number, pointcollection: PointCollection, name: string) {
 	window.firebase.database().ref('users/' + userId).set({
 		points: pointcollection,
@@ -174,8 +84,6 @@ export function redirectingSignUp() {
 	window.firebase.auth().signInWithRedirect(provider);
 }
 
-//let x = window.matchMedia('(max-width: 700px)');
-//if (x.matches) {
 document.querySelector('#nowekonto').addEventListener('click', redirectingSignUp);
 document.querySelector('#zaloguj').addEventListener('click', redirectingSignUp);
 
@@ -183,6 +91,3 @@ document.querySelector('#zaloguj').addEventListener('click', redirectingSignUp);
 if (localStorage.getItem('isRedirecting') == null) {
 	document.body.classList.add('ready');
 }
-/*} else {
-	document.querySelector('#zaloguj').addEventListener('click', signInDesktop);
-} */
