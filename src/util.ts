@@ -29,7 +29,7 @@ window.firebase
 	.getRedirectResult()
 	.then(function(result: any) {
 		if (result.credential) {
-			console.log('logged');git 
+			console.log('logged');
 			let user = result.user;
 			let points: PointCollection;
 			window.firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot: any) {
