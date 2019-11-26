@@ -47,13 +47,7 @@ window.firebase
 						All: 0
 					};
 					writeUserData(user.uid, points, user.displayName);
-					let game = showTheGame(
-						user.displayName,
-						user.email,
-						user.uid,
-						points,
-						'Dziękujemy za rejestrację w grze'
-					);
+					let game = showTheGame(user.displayName, user.email, user.uid, points, 'Dziękujemy za rejestrację');
 				}
 				localStorage.setItem('user-info', JSON.stringify({ user }));
 				localStorage.setItem('points', JSON.stringify({ points }));
