@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/eye.svg"
   },
   {
-    "revision": "c8fe60127f2a2691653d307a62e918bf",
+    "revision": "e7e22756002637b2487d226d915cb773",
     "url": "img/ghost.svg"
   },
   {
@@ -32,11 +32,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/wave1.svg"
   },
   {
-    "revision": "a907fa8db546520d013315dc12cf5551",
+    "revision": "abd2211fa63e83aae02f9287996d4a54",
     "url": "index.html"
   },
   {
-    "revision": "8b7ddeee7b02acf08ace",
+    "revision": "0e9b4e0da740777aebdf",
     "url": "main.bundle.js"
   }
 ]);
