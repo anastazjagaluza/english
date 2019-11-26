@@ -1,0 +1,14 @@
+{
+  "files": [
+    "./src/english.ts",
+    "./custom.d.ts"
+  ],
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "ES2015",
+      "allowJs": true
+    }
+  }

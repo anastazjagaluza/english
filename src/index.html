@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Gra w czasowniki</title>
+</head>
+<style>
+   body {
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+				}
+				#loaderback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: scroll;
+}
+.loaders {
+    border-style: solid;
+    border-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 3s infinite alternate;
+ 
+}
+#bigloader{
+    border-width: .1rem;
+    border-radius: 6rem;
+    width: 5rem;
+    height: 2.5rem;
+}
+#middleloader {
+    border-width: .1rem;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 5rem;
+  animation-duration: 3.8s;
+  animation-direction: alternate-reverse;
+}
+
+#smallerloader{
+    border-width: .1rem;
+    border-radius: 50%;
+    width: 5rem;
+    height: 2.5rem;
+}
+
+#smallestloader{
+    border-width: .1rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 5rem;
+  animation-direction: alternate-reverse;
+  animation-duration:4.1s;
+}
+#middle {
+  width: .1rem;
+  height: .1rem;
+  border-width: .5em;
+  border-style: dotted;
+  border-radius: 10%;
+}
+@keyframes rotate {
+    
+    to {
+        transform: rotate(360deg);
+      
+    }
+}
+
+				#loading {
+					display: none;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: transparent;
+					justify-items: center;
+					align-content: center;
+				}
+
+				body:not(.ready) #loading {
+					display: flex;
+				}
+				body:not(.ready) .welcome {
+					display: none;
+				}
+
+				.welcome {
+					width: 100%;
+					height: 100vh;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					background-image: url("./img/wave1.svg");
+					background-size: contain;
+					background-repeat: repeat-x;
+					background-position: bottom;
+				}
+                .wiadomosc{
+					margin-right: 13rem;
+                    display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+                    width: 20vw;
+                    height: max-content;
+                }
+				.wiadomoscoff{
+                    display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+                    width: 30vw;
+                    height: max-content;
+					background: white;
+					box-shadow: 1px 4px 6px gray;
+					padding: 2rem;
+                }
+				canvas {
+					margin: 0;
+					padding: 0;
+					width: 100%;
+					height: 100vh;
+					position: fixed;
+					top: 0;
+					left: 0;
+				}
+
+				#witaj,
+				.info {
+					font-family: 'Montserrat', sans-serif;
+					font-size: 1.3rem;
+					text-align: center;
+                  
+                   
+				}
+                #democlip{
+					
+					box-shadow: 1px 1px 3px gray;
+                }
+				#loader{
+					width: 100%;
+					height: 100%;
+					background-color: red;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+				.logowanie {
+					cursor: pointer;
+					justify-self: flex-start;
+					padding: .6rem;
+					width: max-content;
+					background-color: transparent;
+                    font-size: 1.2rem;
+					border: 1px solid black;					
+					box-shadow: 1px 1px 3px gray;
+				}
+
+				.sadcat {
+					width: 14rem;
+					height: 14rem;
+				}
+                #nowekonto{
+					cursor: pointer;
+                    border: none;
+                    background: none;
+                    font-size: 1rem;
+                    margin-top: .2rem;
+                }
+				
+				.logowanie:hover {
+                    transition: 1s;
+                    color: white;
+                    border: 1px solid white;
+					background: linear-gradient(to top, #a57fff, #63bda2);
+				}
+                @media screen and (max-width: 600px) {
+                    .wiadomosc, .wiadomoscoff{
+width: 68vw;
+background: white;
+box-shadow: 1px 3px 6px gray;
+margin: 0;
+padding-bottom: 2rem;
+                    }
+					#democlip{
+						display: none;
+					}
+                }
+
+				
+</style>
+
+<body>
+	
+		<div id="loading">
+				
+<div id="loaderback">
+		<div class="loaders" id="bigloader">
+			<div class="loaders" id="smallerloader">
+			<div class="loaders" id="smallestloader">
+			  <div class="loaders" id="middleloader">
+			  <div class="loaders" id="middle"></div>
+			  </div>
+			</div>
+		</div>
+		
+		  </div>
+		  </div>
+		  
+		</div>
+    <div class="welcome">
+       <div class="wiadomosc"> <p id="witaj">Witaj!</p>
+        <p class="info">Aby przejść do gry, zaloguj się za pośrednictwem google!</p>
+      <button class="logowanie" id="zaloguj">Zaloguj się</button>
+        <button class="signup" id="nowekonto">Załóż konto</button>
+	</div>
+
+
+<div id="democlip"><img src="img/demo.gif"></div>
+</div>
+    <canvas id="canvas" style="display:none"></canvas>
+	<script type="text/javascript">
+	// Does the current browser understand Custom Elements?
+	var supported = false;
+			try {
+				eval('"use strict"; class foo {}');
+				supported = true;
+			}
+				catch (e) {
+			}
+			if (!supported) {
+				document.write(`Niestety Twoja przeglądarka nie obsługuje tej gry. Pobierz najnowszą wersję swojej przeglądarki lub skorzystaj z innej.`);
+			}
+	</script>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+       <!--Polyfill-->
+    <script crossorigin src="https://polyfill.app/api/polyfill?features=web-components,animation"></script>
+   
+</body>
+</html>
