@@ -37,7 +37,7 @@ export class EnglishVerbsGame extends LitElement {
           background: white;;
           width: 100vw;
           height: 100vh;
-         
+          
           --global-font: "Cabin", sans-serif;
           --global-color: #7fb2ff;
           --mobile-background-color: #ccd4e0;
@@ -176,6 +176,7 @@ export class EnglishVerbsGame extends LitElement {
           width: 100%;
           height: 100%;
           backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         #points {
             border: none;
@@ -321,6 +322,9 @@ export class EnglishVerbsGame extends LitElement {
           font-size: 1rem;
         }
         #wrapper {
+          background: url("./img/ghostbg.svg");
+          background-repeat: repeat;
+          background-size: contain;
            display: flex;
           flex-direction: column;
           align-content: center;
