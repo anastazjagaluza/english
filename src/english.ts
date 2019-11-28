@@ -34,19 +34,19 @@ export class EnglishVerbsGame extends LitElement {
     return [
       css`
         :host {
-          background: white;;
+          background: white;
           width: 100vw;
           height: 100vh;
           
           --global-font: "Cabin", sans-serif;
-          --global-color: #7fb2ff;
+          --global-color: #3AAA35;
           --mobile-background-color: #ccd4e0;
           --mobile-top: linear-gradient(to bottom, #a57fff, #63bda2);
           --mobile-bottom: linear-gradient(to top, #a57fff, #63bda2);
           --mobile-global: #87c0c0;
-          --desktop-color: #a57fff;
-          --warn-color: #fff27f;
-          --bad-color: #ffb27f;
+          --desktop-color: #F9B233;
+          --warn-color: #CB454E;
+          --bad-color: #d65b63;
           --good-color: #7dffaf;
           overflow: hidden;
         }
@@ -84,7 +84,13 @@ export class EnglishVerbsGame extends LitElement {
             outline: 1px solid var(--bad-color);
           }
         }
+        #translationparrot{
+          width: 4rem;
+          height: 4rem;
+          -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 
+        }
         input,
         .theword {
           width: 20vw;
@@ -209,7 +215,7 @@ export class EnglishVerbsGame extends LitElement {
           color: black;
           padding: 0.2rem;
           font-size: 130%;
-          margin-top: 20vh;
+          margin-top: 16vh;
           margin-bottom: 4vh;
           z-index: 997;
           font-family: var(--global-font);
@@ -265,14 +271,22 @@ export class EnglishVerbsGame extends LitElement {
           font-size: 2rem;
           background-color: white;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           justify-content: center;
           color: black;
-          width: 60%;
+          width: max-content;
           padding: 1rem;
           box-shadow: 3px 3px 6px gray;
           font-family: var(--global-font);
           text-align: center;
+        }
+        .box>img{
+          width: 8rem;
+          height: 8rem;
+          align-self: flex-start;
+          margin-right: 4rem; -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  overflow: hidden;
         }
 
         @media only screen and (max-width: 600px) {
@@ -322,9 +336,7 @@ export class EnglishVerbsGame extends LitElement {
           font-size: 1rem;
         }
         #wrapper {
-          background: url("./img/ghostbg.svg");
-          background-repeat: repeat;
-          background-size: contain;
+      
            display: flex;
           flex-direction: column;
           align-content: center;
@@ -551,13 +563,16 @@ logingOut(){
     });
   }
 
-  readTheWord(form: any) {
+  async readTheWord(form: any) {
+    this.shadowRoot.querySelector<HTMLImageElement>("#translationparrot").src = "./img/parotfacespeak.svg";
     let msg = new SpeechSynthesisUtterance(form);
     msg.rate = 0.7;
     let voices = this.speech.getVoices();
     msg.voice = voices[10];
     msg.lang = "en-US";
     this.speech.speak(msg);
+    setTimeout(()=>{
+    this.shadowRoot.querySelector<HTMLImageElement>("#translationparrot").src = "./img/parrotface.svg";}, 1000);
   }
 
   updated(a: any) {
@@ -571,7 +586,7 @@ logingOut(){
     return html`
    <profile-card @logout="${this.logingOut}" @previousValue="${(e: CustomEvent)=> {this.oldValue = e.detail.oldValue()}}" @valueSelected="${(e: CustomEvent)=> {this.selectionChoice(e.detail.newValue())}}" id="settings" .userName="${this.user.name}" .userEmail="${this.user.email}" .userid="${this.user.uid}" .pointCollection="${this.pointCollection}"></profile-card>
  <div class="modal" id="greeting"> 
-           <div class="box"> <p> ${this.greetingMessage}, ${this.user.name}!</p></div>
+           <div class="box"><img src="./img/parrottalk.svg"> <p> ${this.greetingMessage}, ${this.user.name.split(" ")[0]}!</p></div>
         </div>
     <div class="modal" id="congratulations" @click="${() => {
       this.congratulations.style.display = "none";
@@ -590,7 +605,7 @@ logingOut(){
       <p id="title">English Verbs Game</p>
 <div id="points">${this.oldValue !=="All" ? `Poziom ${this.oldValue}:` : `Wymieszane poziomy:`} ${this.points}</div>
 </div>
-<div id="translationbox">Tłumaczenie: ${this.translation}</div>
+<div id="translationbox"><img id="translationparrot" src="./img/parrotface.svg">Tłumaczenie: ${this.translation}</div>
     <div id="container">
     
     ${this.correctWord === undefined ? undefined : this.correctWord.map((form, index) => {
@@ -598,7 +613,7 @@ logingOut(){
         return html`
           <div
             class="theword"
-            @click="${() => {
+            @click="${() => { 
               this.readTheWord(form);
             }}"
             @mouseover="${(e: Event) => {

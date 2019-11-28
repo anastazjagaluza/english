@@ -104,7 +104,7 @@ export class LogScreen extends LitElement {
 		return html`   
 		<div class="welcome">
 		<div class="wiadomoscoff">
-		<img class="sadcat" src="./img/ghost.svg">
+		<img class="sadcat" src="./img/parrotcry.svg">
 		
 		<p id="witaj">${this.title}</p>
 		<p class="info">${this.message}</p>
