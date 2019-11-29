@@ -39,7 +39,7 @@ export class ProfileCard extends LitElement {
 					top: 0;
 					left: 0;
 					width: 20vw;
-					background-color: gray;
+					background-color: var(--desktop-color);
 					z-index: 998;
 					transform: translateX(-80vw);
 					display: flex;

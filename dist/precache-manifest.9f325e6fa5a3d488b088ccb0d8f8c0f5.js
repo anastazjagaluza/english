@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/eye.svg"
   },
   {
-    "revision": "87339a54a353096697926448e450bf8f",
+    "revision": "34acafa71120ae189548c8ada370dc94",
     "url": "img/parotfacespeak.svg"
   },
   {
@@ -24,11 +24,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/parrot.svg"
   },
   {
-    "revision": "e494698dfc3f94c6bbdd7c167b577dd9",
+    "revision": "fdb8ca5dd431e2fd2d6f5efe11ef7cb5",
     "url": "img/parrotcry.svg"
   },
   {
-    "revision": "5577097fd81454e5b312d02211eb9366",
+    "revision": "a25acf2f63717c14aa5071862a614002",
     "url": "img/parrotface.svg"
   },
   {
@@ -48,7 +48,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/soundwhite.svg"
   },
   {
-    "revision": "e447ecfc989238b8ba6b472e41334209",
+    "revision": "ce73ca141bb3557c76c39952293ffff9",
     "url": "img/wave1.svg"
   },
   {
@@ -56,7 +56,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "index.html"
   },
   {
-    "revision": "d82a9408858c321c0d75",
+    "revision": "4bdd23f7281f7ebc7671",
     "url": "main.bundle.js"
   }
 ]);

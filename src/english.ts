@@ -39,12 +39,12 @@ export class EnglishVerbsGame extends LitElement {
           height: 100vh;
           
           --global-font: "Cabin", sans-serif;
-          --global-color: #3AAA35;
-          --mobile-background-color: #ccd4e0;
+          --global-color: #109b66;
+          --topbar-text-color: white;
           --mobile-top: linear-gradient(to bottom, #a57fff, #63bda2);
           --mobile-bottom: linear-gradient(to top, #a57fff, #63bda2);
           --mobile-global: #87c0c0;
-          --desktop-color: #F9B233;
+          --desktop-color: #283b36;
           --warn-color: #CB454E;
           --bad-color: #d65b63;
           --good-color: #7dffaf;
@@ -85,6 +85,7 @@ export class EnglishVerbsGame extends LitElement {
           }
         }
         #translationparrot{
+          opacity: 0;
           width: 4rem;
           height: 4rem;
           -webkit-transform: scaleX(-1);
@@ -243,7 +244,7 @@ export class EnglishVerbsGame extends LitElement {
             padding-left: 2%;
             padding-right: 2%;
             width: 96%;
-            color: white;
+            color: var(--topbar-text-color);
           }
         
         .modal {
@@ -422,7 +423,8 @@ export class EnglishVerbsGame extends LitElement {
   greet() {
     setTimeout(() => {
       this.shadowRoot.querySelector<HTMLElement>("#greeting").style.display = "none";
-      this.wordsAnimation();
+     this.wordsAnimation();
+      this.shadowRoot.querySelector<HTMLElement>("#translationparrot").style.opacity = "1";
     }, 2400);
   }
   
@@ -566,10 +568,10 @@ logingOut(){
   async readTheWord(form: any) {
     this.shadowRoot.querySelector<HTMLImageElement>("#translationparrot").src = "./img/parotfacespeak.svg";
     let msg = new SpeechSynthesisUtterance(form);
-    msg.rate = 0.7;
     let voices = this.speech.getVoices();
-    msg.voice = voices[10];
     msg.lang = "en-US";
+    msg.voice = voices[6];
+   
     this.speech.speak(msg);
     setTimeout(()=>{
     this.shadowRoot.querySelector<HTMLImageElement>("#translationparrot").src = "./img/parrotface.svg";}, 1000);

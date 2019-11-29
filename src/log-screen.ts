@@ -80,7 +80,7 @@ export class LogScreen extends LitElement {
 					transition: 1s;
 					color: white;
 					border: 1px solid white;
-					background: linear-gradient(to top, #a57fff, #63bda2);
+					background: linear-gradient(to top, #f9b233, #3aaa35);
 				}
 				@media screen and (max-width: 600px) {
 					.wiadomosc,

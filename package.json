@@ -5,12 +5,15 @@
 		"serve": "http-server --push-state -o -c-1 -p 3022 -a localhost",
 		"s": "npm run serve",
 		"start": "webpack-dev-server --open",
-		"build": "webpack"
+		"build": "webpack",
+		"cy:run": "cypress run",
+		"cy:ci": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test start https-get://localhost:3030 cy:run"
 	},
 	"devDependencies": {
 		"assets-webpack-plugin": "^3.9.10",
 		"clean-webpack-plugin": "^3.0.0",
 		"copy-webpack-plugin": "^5.0.5",
+		"cypress": "^3.7.0",
 		"file-loader": "^4.2.0",
 		"html-webpack-plugin": "^3.2.0",
 		"http-server": "^0.11.1",
